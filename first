@@ -1,0 +1,23 @@
+describe('My First Test', function () {
+    it('Does not do much!', function () {
+        cy.visit("http://10.128.35.81/uat/allocate-class")
+        cy.get('[title="UAT"]').click()
+        cy.get(".ant-select-selection__placeholder").first()
+        .type("23788718")
+        cy.wait(100)
+        cy.contains("DUAT Mobile(23788718)").click()
+        cy.contains("+30 mins").click()
+        cy.get('[class="ant-select ant-select-enabled"]').last()
+        .click()
+        cy.contains("GL-General-EvcCN1 for all levels").click()
+        cy.get('.ant-btn.ant-btn-primary').click()
+
+        for( var i =1; i<=10; i++){
+            cy.contains("+30 mins").click()
+            cy.wait(100)
+            cy.contains("+30 mins").click()
+            cy.get('.ant-btn.ant-btn-primary').click()
+        }
+   
+    })
+})
